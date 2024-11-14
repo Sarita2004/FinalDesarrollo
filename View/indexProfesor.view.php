@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="bs-example">
         <div class="container">
@@ -37,9 +39,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($profesores as $profesor): ?> 
+                            <?php foreach ($profesores as $profesor): ?>
                                 <tr>
-                                    <td><?= $profesor->id_profesor; ?></td> 
+                                    <td><?= $profesor->id_profesor; ?></td>
                                     <td><?= $profesor->nombre; ?></td>
                                     <td><?= $profesor->apellido; ?></td>
                                     <td><?= $profesor->DNI; ?></td>
@@ -47,8 +49,8 @@
                                     <td><?= $profesor->telefono; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                        <a href="../Controllers/editarProfesor.php?id_profesor=<?= $profesor->id_profesor; ?>" class="btn btn-warning btn-sm">Editar</a>
-                                        <a href="../Controllers/eliminarProfesor.php?id_profesor=<?= $profesor->id_profesor; ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                                            <a href="../Controllers/editarProfesor.php?id_profesor=<?= $profesor->id_profesor; ?>" class="btn btn-warning btn-sm">Editar</a>
+                                            <a href="../Controllers/eliminarProfesor.php?id_profesor=<?= $profesor->id_profesor; ?>" class="btn btn-danger btn-sm">Eliminar</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -77,4 +79,5 @@
         });
     </script>
 </body>
+
 </html>

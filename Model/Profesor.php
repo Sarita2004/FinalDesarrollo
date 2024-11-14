@@ -6,14 +6,15 @@ require_once 'Materia.php';
 class Profesor extends Conexion
 {
 
-    public $id, $nombre, $apellido, $DNI, $fecha_nacimiento, $telefono, $calle, $nro, $codigo_postal, $estado_civil, $genero;
+    public $id_profesor, $nombre, $apellido, $DNI, $fecha_nacimiento, $telefono, $calle, $nro, $codigo_postal, $estado_civil, $genero; //problema en la variable id_profesor, antes se llamaba ID y no cambiaba los datos al actualizar o eliminar,
+    // tiene que tener el mismo nombres que en la bd
 
     public function create()
     {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "INSERT INTO profesores (nombre, apellido, DNI, fecha_nacimiento, telefono, calle, nro, codigo_postal, estado_civil, genero) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $pre->bind_param(
-            "ssisisiiss",
+            "ssisssiiss",
             $this->nombre,
             $this->apellido,
             $this->DNI,
@@ -58,16 +59,16 @@ class Profesor extends Conexion
     {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "DELETE FROM profesores WHERE id_profesor = ?");
-        $pre->bind_param("i", $this->id);
+        $pre->bind_param("i", $this->id_profesor);
         $pre->execute();
     }
 
     public function update()
     {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "UPDATE profesores SET nombre = ?, apellido = ?, DNI = ?, fecha_nacimiento = ?, telefono = ?, calle = ?, nro = ?, codigo_postal = ?, estado_civil = ?, genero = ? WHERE id_profesor= ?");
+        $pre = mysqli_prepare($this->con, "UPDATE profesores SET nombre = ?, apellido = ?, DNI = ?, fecha_nacimiento = ?, telefono = ?, calle = ?, nro = ?, codigo_postal = ?, estado_civil = ?, genero = ? WHERE id_profesor = ?");
         $pre->bind_param(
-            "ssisisiissi",
+            "ssisssiissi",
             $this->nombre,
             $this->apellido,
             $this->DNI,
@@ -78,7 +79,7 @@ class Profesor extends Conexion
             $this->codigo_postal,
             $this->estado_civil,
             $this->genero,
-            $this->id
+            $this->id_profesor
         );
         $pre->execute();
     }
