@@ -3,25 +3,29 @@
 require_once 'Conexion.php';
 require_once 'Materia.php';
 
-class Alumno extends Conexion {
+class Alumno extends Conexion
+{
 
     public $id_alumno, $nombre, $apellido, $email, $DNI, $fecha_nacimiento, $telefono, $calle, $nro, $codigo_postal, $estado_civil, $genero;
 
-    public function create() {
+    public function create()
+    {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "INSERT INTO alumnos (nombre, apellido, email, DNI, fecha_nacimiento, telefono, calle, nro, codigo_postal, estado_civil, genero) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $pre->bind_param("sssisisiiss",
-        $this->nombre,
-        $this->apellido, 
-        $this->email, 
-        $this->DNI, 
-        $this->fecha_nacimiento, 
-        $this->telefono, 
-        $this->calle, 
-        $this->nro,
-        $this->codigo_postal,
-        $this->estado_civil,
-        $this->genero);
+        $pre->bind_param(
+            "sssisisiiss",
+            $this->nombre,
+            $this->apellido,
+            $this->email,
+            $this->DNI,
+            $this->fecha_nacimiento,
+            $this->telefono, //fijate que a la hora de cargar el telefono, no lo carga bien, tendrias que poner que es varchar, no int en la BD
+            $this->calle,
+            $this->nro,
+            $this->codigo_postal,
+            $this->estado_civil,
+            $this->genero
+        );
         $pre->execute();
     }
 
@@ -50,7 +54,8 @@ class Alumno extends Conexion {
     // }
 
 
-    public static function all() {
+    public static function all()
+    {
         $conexion = new Conexion();
         $conexion->conectar();
         $result = mysqli_prepare($conexion->con, "SELECT * FROM alumnos");
@@ -63,11 +68,12 @@ class Alumno extends Conexion {
         return $alumnos;
     }
 
-    public static function getById($id) {
+    public static function getById($id)
+    {
         $conexion = new Conexion();
         $conexion->conectar();
         $result = mysqli_prepare($conexion->con, "SELECT * FROM alumnos WHERE id_alumno = ?");
-        $result->bind_param("i", $id_alumno);
+        $result->bind_param("i", $id);
         $result->execute();
         $valorDb = $result->get_result();
         $alumno = $valorDb->fetch_object(Alumno::class);
@@ -84,20 +90,23 @@ class Alumno extends Conexion {
     //     $alumno = $resultado->fetch_object(Alumno::class);  // obtenemos un solo objeto
     //     return $alumno;
     // }
-    
-    
 
-    public function delete() {
+
+
+    public function delete()
+    {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "DELETE FROM alumnos WHERE id_alumno = ?");
         $pre->bind_param("i", $this->id_alumno);
         $pre->execute();
     }
 
-    public function update() {
+    public function update()
+    {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ? , apellido = ?, email = ?, DNI = ?, fecha_nacimiento = ?, telefono = ?, calle = ?, nro = ?, codigo_postal = ?, estado_civil=?, genero = ?  WHERE id_alumno = ?");
-        $pre->bind_param("sssisisiissi",
+        $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ?, apellido = ?, email = ?, DNI = ?, fecha_nacimiento = ?, telefono = ?, calle = ?, nro = ?, codigo_postal = ?, estado_civil = ?, genero = ? WHERE id_alumno = ?");
+        $pre->bind_param(
+            "sssisisiissi",
             $this->nombre,
             $this->apellido,
             $this->email,
@@ -109,13 +118,12 @@ class Alumno extends Conexion {
             $this->codigo_postal,
             $this->estado_civil,
             $this->genero,
-            $this->id_alumno);
+            $this->id_alumno
+        );
         $pre->execute();
-
-        
     }
-        // Constructor y otros métodos
-    
+    // Constructor y otros métodos
+
     //     public static function obtenerPorEmail($email) {
     //         $this->conectar();
     //         $query = "SELECT * FROM alumnos WHERE email = ? ";
@@ -125,7 +133,7 @@ class Alumno extends Conexion {
     //         $result = $stmt->get_result();
     //         return $result->fetch_assoc(); // Devolver el alumno como objeto o array
     //     }
-    
+
     //     public function asignarMaterias($materias) {
     //         $this->conectar();
     //         foreach ($materias as $materia_id) {
@@ -136,5 +144,3 @@ class Alumno extends Conexion {
     //         }
     //     }
 }
-
-    

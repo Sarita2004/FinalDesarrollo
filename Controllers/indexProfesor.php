@@ -1,12 +1,8 @@
 <?php
-require_once __DIR__ .'/../Model/Profesor.php';
+require_once __DIR__ . '/../Model/Profesor.php';
 
+// Obtiene todos los profesores
 $profesores = Profesor::all();
 
-// Verificar si existe 'id' en la URL
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $profesor = Profesor::getById($id);
-}
-
-//require_once __DIR__ .'/../Views/indexProfesor.view.php';
+// Carga la vista de la lista de profesores
+require_once __DIR__ . '/../View/indexProfesor.view.php';

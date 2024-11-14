@@ -1,12 +1,5 @@
-
-<?php
-// require_once __DIR__ .'/../Model/Alumno.php';
-// require_once __DIR__ .'/../Controllers/createAlumno.php';
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Include fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-    
 </head>
 
 <body>
@@ -28,63 +20,58 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-
                         <h3>Crear Alumno</h3>
                     </div>
                     <div class="card-body">
-
-                        <form action="" method="post">
-                            
+                        <form action="createAlumno.php" method="post">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombre" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="apellido">Apellido</label>
-                                <input type="text" name="apellido" id="apellido" class="form-control">
+                                <input type="text" name="apellido" id="apellido" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" class="form-control">
+                                <input type="email" name="email" id="email" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="DNI">DNI</label>
-                                <input type="text" name="DNI" id="DNI" class="form-control">
+                                <input type="text" name="DNI" id="DNI" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
+                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="telefono">Telefono</label>
-                                <input type="text" name="telefono" id="telefono" class="form-control">
+                                <label for="telefono">Teléfono</label>
+                                <input type="text" name="telefono" id="telefono" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="calle">Calle</label>
-                                <input type="text" name="calle" id="calle" class="form-control">
+                                <input type="text" name="calle" id="calle" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="nro">Nro</label>
-                                <input type="text" name="nro" id="nro" class="form-control">
+                                <label for="nro">Número</label>
+                                <input type="text" name="nro" id="nro" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="codigo_postal">Codigo Postal</label>
-                                <input type="text" name="codigo_postal" id="codigo_postal" class="form-control">
+                                <label for="codigo_postal">Código Postal</label>
+                                <input type="text" name="codigo_postal" id="codigo_postal" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="estado_civil">Estado Civil</label>
-                                <input type="text" name="estado_civil" id="estado_civil" class="form-control">
+                                <input type="text" name="estado_civil" id="estado_civil" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="genero">Genero</label>
-                                <input type="text" name="genero" id="genero" class="form-control">
+                                <label for="genero">Género</label>
+                                <input type="text" name="genero" id="genero" class="form-control" required>
                             </div>
                             <button type="submit" name="enviarFormulario" class="btn btn-primary">
-                                <i class="fas fa fa-send">Enviar</i>
+                                <i class="fas fa-send"></i> Enviar
                             </button>
-
                         </form>
-
                     </div>
                 </div>
             </div>

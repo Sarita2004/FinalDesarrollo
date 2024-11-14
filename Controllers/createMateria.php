@@ -22,4 +22,3 @@ if(isset($_POST['enviarFormulario'])){
 } else {
     echo "No se presionó el botón de enviar formulario";
 }
-

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ .'/../Model/Materia.php';
+require_once __DIR__ . '/../Model/Materia.php';
 if (isset($_GET['id_materia'])) {
     $id = $_GET['id_materia'];
 } else {
@@ -17,7 +17,7 @@ $id = $_GET['id_materia'];
 // }
 
 // $id = $_GET['id_materia'];
-if(isset($_POST['actualizarDatos'])){
+if (isset($_POST['actualizarDatos'])) {
     $nombre = $_POST['nombre'];
     $carga_horaria = $_POST['carga_horaria'];
 
@@ -27,12 +27,9 @@ if(isset($_POST['actualizarDatos'])){
     $carga_horaria->update();
 
     header('Location: ../Controllers/indexMateria.php');
-} else  {
+} else {
     $materia = Materia::getById($id);
     if ($materia) {
-        require_once __DIR__ .'/../Views/editarMateria.view.php';
+        require_once __DIR__ . '/../Views/editarMateria.view.php';
     }
 }
-
-
-

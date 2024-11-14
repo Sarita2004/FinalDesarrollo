@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ .'/../Model/Profesor.php';
+require_once __DIR__ . '/../Model/Profesor.php';
 
-if(isset($_POST['enviarFormulario'])){
+if (isset($_POST['enviarFormulario'])) {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $DNI = $_POST['DNI'];
@@ -13,7 +13,6 @@ if(isset($_POST['enviarFormulario'])){
     $codigo_postal = $_POST['codigo_postal'];
     $estado_civil = $_POST['estado_civil'];
     $genero = $_POST['genero'];
-
 
     $profesor = new Profesor();
     $profesor->nombre = $nombre;
@@ -28,13 +27,11 @@ if(isset($_POST['enviarFormulario'])){
     $profesor->genero = $genero;
     $profesor->create();
 
-    
-
-    // echo "Nombre: $nombre, Apellido: $apellido, Fecha de Nacimiento: $fecha_nacimiento";
-
-    // echo "Se presionó el botón de enviar formulario";
+    // Redirigir a la lista de profesores o mostrar un mensaje de éxito
+    header('Location: indexProfesor.php');
+    exit();
 } else {
     echo "No se presionó el botón de enviar formulario";
 }
 
-//require_once __DIR__ .'/../Views/createProfesor.view.php';
+require_once __DIR__ . '/../View/createProfesor.view.php'; // Asegúrate de que la vista esté en la ubicación correcta

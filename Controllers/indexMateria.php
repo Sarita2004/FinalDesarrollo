@@ -9,4 +9,3 @@ if (isset($_GET['id_materia'])) {
     $id = $_GET['id_materia'];
     $materia = Materia::getById($id);
 }
-

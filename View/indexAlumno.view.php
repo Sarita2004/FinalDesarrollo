@@ -1,8 +1,3 @@
-<?php
-require_once  __DIR__ .'/../Controllers/indexAlumno.php';
-require_once  __DIR__ .'/../Model/Alumno.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,15 +6,10 @@ require_once  __DIR__ .'/../Model/Alumno.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Alumnos</title>
     <!-- DataTables CSS library -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" />
-
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="//code.jquery.com/jquery-3.5.1.js"></script>
-    <!-- DataTables JS library -->
     <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <!-- DataTables JBootstrap -->
     <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
     <style type="text/css">
         .bs-example {
@@ -34,7 +24,7 @@ require_once  __DIR__ .'/../Model/Alumno.php';
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <a href="createAlumno.view.php" class="btn btn-success float-right">Agregar Alumno</a>
+                        <a href="../Controllers/createAlumno.php" class="btn btn-success float-right">Crear Alumno</a>
                         <h2 class="pull-left">Lista de Alumnos</h2>
                     </div>
                     <table id="listaAlumnos" class="table table-sm table-striped table-bordered" style="width:100%">
@@ -45,23 +35,10 @@ require_once  __DIR__ .'/../Model/Alumno.php';
                                 <th>Apellido</th>
                                 <th>Fecha Nacimiento</th>
                                 <th>Acciones</th>
-
                             </tr>
                         </thead>
                         <tbody>
-
-                            <?php
-
-                            // foreach ($alumnos as $alumnos) {
-                            //     echo "<tr>";
-                            //     echo "<td>" . $alumnos->id . "</td>";
-                            //     echo "<td>" . $alumnos->nombre . "</td>";
-                            //     echo "<td>" . $alumnos->apellido . "</td>";
-                            //     echo "<td>" . $alumnos->fecha_nacimiento . "</td>";
-                            //     echo "</tr>";
-                            // }
-
-                            foreach ($alumnos as $alumno) { ?>
+                            <?php foreach ($alumnos as $alumno): ?>
                                 <tr>
                                     <td><?= $alumno->id_alumno; ?></td>
                                     <td><?= $alumno->nombre; ?></td>
@@ -69,15 +46,12 @@ require_once  __DIR__ .'/../Model/Alumno.php';
                                     <td><?= date('d/m/Y', strtotime($alumno->fecha_nacimiento)); ?></td>
                                     <td>
                                         <div class="btn-group">
-                                        <a href="editarAlumno.view.php?id_alumno=<?= $alumno->id_alumno; ?>" class="btn btn-warning btn-sm">Editar</a>
-                                        <a href="../Controllers/eliminarAlumno.php?id=<?= $alumno->id_alumno; ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                                            <a href="../Controllers/editarAlumno.php?id_alumno=<?= $alumno->id_alumno; ?>" class="btn btn-warning btn-sm">Editar</a>
+                                            <a href="../Controllers/eliminarAlumno.php?id_alumno=<?= $alumno->id_alumno; ?>" class="btn btn-danger btn-sm">Eliminar</a>
                                         </div>
                                     </td>
                                 </tr>
-                            
-                            <?php }
-
-                            ?>
+                            <?php endforeach; ?>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -96,7 +70,7 @@ require_once  __DIR__ .'/../Model/Alumno.php';
 </body>
 <script>
     $(document).ready(function() {
-        $('#listaAlumnos').DataTable({});
+        $('#listaAlumnos').DataTable();
     });
 </script>
 

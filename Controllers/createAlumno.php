@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ .'/../Model/Alumno.php';
+require_once __DIR__ . '/../Model/Alumno.php';
 
-if(isset($_POST['enviarFormulario'])){
+if (isset($_POST['enviarFormulario'])) {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];
@@ -14,7 +14,6 @@ if(isset($_POST['enviarFormulario'])){
     $codigo_postal = $_POST['codigo_postal'];
     $estado_civil = $_POST['estado_civil'];
     $genero = $_POST['genero'];
-
 
     $alumno = new Alumno();
     $alumno->nombre = $nombre;
@@ -30,13 +29,11 @@ if(isset($_POST['enviarFormulario'])){
     $alumno->genero = $genero;
     $alumno->create();
 
-    
-
-    // echo "Nombre: $nombre, Apellido: $apellido, Fecha de Nacimiento: $fecha_nacimiento";
-
-    // echo "Se presionó el botón de enviar formulario";
+    // Redirigir a la lista de alumnos o mostrar un mensaje de éxito
+    header('Location: indexAlumno.php');
+    exit();
 } else {
     echo "No se presionó el botón de enviar formulario";
 }
 
-require_once __DIR__ .'/../Views/createAlumno.view.php';
+require_once __DIR__ . '/../View/createAlumno.view.php'; // Asegúrate de que la vista esté en la ubicación correcta
